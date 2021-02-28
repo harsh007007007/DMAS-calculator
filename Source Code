@@ -1,0 +1,77 @@
+/*
+Harsh Shah
+ */
+package extralab8_1;
+import javafx.scene.Scene;
+import javafx.application.Application;
+import javafx.stage.Stage;
+import javafx.scene.control.Button;
+import javafx.geometry.Pos;
+import javafx.scene.control.Label;
+import javafx.scene.control.TextField;
+import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.FlowPane;
+import javafx.scene.layout.HBox;
+
+public class ExtraLab8_1 extends Application {
+    @Override
+    
+    public void start (Stage p)
+    {
+      FlowPane pane = new FlowPane();
+        TextField num1 = new TextField();
+        TextField num2 = new TextField();
+        TextField result = new TextField();
+        num1.setPrefColumnCount(4);
+        num2.setPrefColumnCount(4);
+        result.setPrefColumnCount(6);
+        pane.getChildren().addAll(new Label ("Number 1:"), num1, new Label ("Number 2:"),num2, new Label("Result:"),result);
+       
+        HBox h= new HBox(5);
+        Button btAdd = new Button("Add");
+        Button btSubtract = new Button("Subtract");
+        Button btMultiply = new Button("Mutliply");
+        Button btDivide = new Button("Divide");
+        h.setAlignment(Pos.CENTER);
+        h.getChildren().addAll(btAdd,btSubtract,btMultiply,btDivide);
+        
+        BorderPane b = new BorderPane();
+        b.setCenter(pane);
+        b.setBottom(h);
+        BorderPane.setAlignment(b, Pos.CENTER);
+        Scene s = new Scene (b,400,400);
+        p.setTitle("Mini Calculator");
+        p.setScene(s);
+        p.show();
+       
+        btAdd.setOnAction(e->{
+            double x = Double.parseDouble(num1.getText());
+            double y = Double.parseDouble(num2.getText());
+            result.setText( String.valueOf((x+y)) );
+        });
+        
+        btSubtract.setOnAction(e->{
+            double x = Double.parseDouble(num1.getText());
+            double y = Double.parseDouble(num2.getText());
+            result.setText( String.valueOf((x-y)) );
+        });
+        
+        btMultiply.setOnAction(e->{
+            double x = Double.parseDouble(num1.getText());
+            double y = Double.parseDouble(num2.getText());
+            result.setText( String.valueOf((x*y)) );
+        });
+        
+        btDivide.setOnAction(e->{
+            double x = Double.parseDouble(num1.getText());
+            double y = Double.parseDouble(num2.getText());
+            result.setText( String.valueOf((x/y)) );
+        });        
+    }
+
+   public static void main(String[] args) 
+    {
+        launch(args);
+    }
+    
+}
